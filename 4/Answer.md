@@ -196,7 +196,8 @@ XSSは＜と＞などの文字を、特殊文字として認識するブラウ�
 - 指摘事項A：画面の遷移の中で、暗号化通信と非暗号化通信が混在しているが、暗号化通信でだけ使用されるべきクッキーに(a)属性が設定されていないページが存在する。
 - 指摘事項B：任意のスクリプトが実行可能であるページが存在する
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8ac26390-a207-4204-8b3e-98b6d99c1afa/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8ac26390-a207-4204-8b3e-98b6d99c1afa/Untitled.png)
+![情報処理試験H24-001](https://user-images.githubusercontent.com/58420905/125164817-1fa02180-e1cf-11eb-852f-be84190c7cca.png)
+
 
 aに当てはまる文字を入れよ。
 
