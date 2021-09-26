@@ -22,6 +22,51 @@ CORS(cross-origin-resource-sharing)の事で同一生成元ポリシー（same-o
 
 同一生成元は英語でsame-originといい、同一ではない場合をcross-originという
 
+### preflight request
+
+すごく簡単に表現すると、プリフライトは「本当にリクエスト送って良いの？」を確かめるためのブラウザのセキュリティ機構。
+
+`OPTIONS` メソッドで対象の異なるオリジンにリクエストを送り、実際のリクエストを送っても問題ないか確認する。該当するリクエストは以下。
+
+- PUT
+- DELETE
+- CONNECT
+- OPTIONS
+- TRACE
+- PATCH
+
+プリフライトリクエストのレスポンスとして、アクセスを許可するメソッドをレスポンスヘッダーに含める必要がある。
+
+`Access-Control-Allow-Methods: PUT, DELETE, PATCH`
+
+### simple request
+
+MDN抜粋
+
+・許可されているメソッドのうちの一つであること。
+　・GET
+　・HEAD
+　・POST
+・ユーザーエージェントによって自動的に設定されたヘッダー (たとえば Connection、 User-Agent、 または Fetch 仕様書で「禁止ヘッダー名」として定義されているヘッダー) を除いて、手動で設定できるヘッダーは、 Fetch 仕様書で「CORS セーフリストリクエストヘッダー」として定義されている以下のヘッダーだけです。
+　・Accept
+　・Accept-Language
+　・Content-Language
+　・Content-Type (但し、下記の要件を満たすもの)
+　　　・application/x-www-form-urlencoded
+　　　・multipart/form-data
+　　　・text/plain
+　・DPR
+　・Downlink
+　・Save-Data
+　・Viewport-Width
+　・Width
+・リクエストに使用されるどの XMLHttpRequestUpload にもイベントリスナーが登録されていないこと。これらは正しく XMLHttpRequest.upload を使用してアクセスされます。
+・リクエストに ReadableStream オブジェクトが使用されていないこと。
+
+### access-control-allow-origin
+
+別のオリジン下のコンテンツから、自身のサーバーのリソースが読み取りアクセスされることを許可するヘッダ
+
 ### preflight requestが送信されない「シンプルなリクエスト」に該当するための条件説明
 
 CORSにはSimple RequestとPreflight Requestがあり
@@ -40,8 +85,6 @@ Content-Type
 
 サーバーから適切な許可がなければブラウザはエラーとなる
 
-どのオリジンからもアクセスすることができるため、
-
 [https://dev.opera.com/articles/dom-access-control-using-cors/](https://dev.opera.com/articles/dom-access-control-using-cors/)
 
 ### XMLHttpRequestを使ってクロスオリジンリクエストの説明
@@ -53,7 +96,7 @@ XMLHttpRequestを使ってクロスオリジンリクエストを発行する際
 XML
 
 const xhr = new XMLHttpRequest();
-xhr.withCredentials = true; 
+xhr.withCredentials = true;
 
 ### Server Side
 
