@@ -103,7 +103,8 @@ CSSファイルがmax-age=31536000となっている。
 
 31536000秒は8760時間のため365日。1年間の有効期限を設定している。
 
-![スクリーンショット 2021-09-20 0.16.36.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/92a061b7-8e3a-4d22-8335-3c5abe36a646/スクリーンショット_2021-09-20_0.16.36.png)
+![スクリーンショット 2021-09-20 0 16 36](https://user-images.githubusercontent.com/58420905/134767220-2305fef3-7eea-490c-94a8-0f106e3a2101.png)
+
 
 youtubeのページ
 
@@ -111,7 +112,8 @@ cache-control:private, max-age=21284
 
 自分のビデオのキャッシュを約6時間(21284/3600)持つ
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f656d735-bbf4-48be-b520-ba2a33c3bc41/Untitled.png)
+<img width="1152" alt="スクリーンショット 2021-09-20 20 58 28" src="https://user-images.githubusercontent.com/58420905/134767231-a213923d-ed00-40da-9aed-215261390d57.png">
+
 
 udemyのログインページ
 
@@ -119,7 +121,8 @@ cache-control: public, max-age=7200
 
 google-analysticsの有効キャッシュが2時間(7200/3600)
 
-![スクリーンショット 2021-09-20 22.02.08.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5102479a-1439-400c-8e54-f38a8049bdda/スクリーンショット_2021-09-20_22.02.08.png)
+<img width="1064" alt="スクリーンショット 2021-09-20 22 02 08" src="https://user-images.githubusercontent.com/58420905/134767239-7763e201-13b3-406b-9151-3e6c8e8ea64c.png">
+
 
 ## 課題２（実装）
 
