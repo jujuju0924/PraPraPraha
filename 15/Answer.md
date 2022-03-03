@@ -68,6 +68,15 @@ UPDATE Employees SET Junior = CASE WHEN strftime('%Y',BirthDate) > '1960' THEN T
 
 ## 「長くお世話になった運送会社には運送コストを多く払うことになったので、たくさん運送をお願いしている業者を特定して欲しい」
 
+### long_relationカラムを追加
+
+```
+ALTER TABLE Shippers
+ADD long_relation BOOLEAN NOT NULL DEFAULT false
+```
+
+### 
+
 ## 「それぞれのEmployeeが最後に担当したOrderと、その日付を取得してほしい」
 
 ## Customerテーブルで任意の１レコードのCustomerNameをNULLにしてください
