@@ -34,9 +34,37 @@ ORDER BY ShippingCount DESC
 
 ## 「重要な市場を把握したい」と頼まれました。売上が高い順番にCountryを並べてみる
 
+```
+SELECT ROUND(SUM(Price * Quantity)) AS sales,Country FROM Orders 
+JOIN Customers ON Orders.CustomerID = Customers.CustomerID
+JOIN OrderDetails ON OrderDetails.OrderID = Orders.OrderID
+JOIN Products ON OrderDetails.ProductID = Products.ProductID
+GROUP BY Country ORDER BY sales DESC
+```
 ## 国ごとの売上を年毎に集計してください
 
+```
+SELECT ROUND(SUM(Price * Quantity)) AS sales, strftime('%Y',Orders.OrderDate) AS OrderYear, Country 
+FROM Orders 
+JOIN Customers ON Orders.CustomerID = Customers.CustomerID
+JOIN OrderDetails ON OrderDetails.OrderID = Orders.OrderID
+JOIN Products ON OrderDetails.ProductID = Products.ProductID
+GROUP BY Country, OrderYear
+```
+
 ## 「社内の福利厚生の規定が変わったので、年齢が一定以下の社員には、それとわかるようにフラグを立てて欲しい」
+
+### フラグを作る
+```
+ALTER TABLE Employees
+ADD Junior BOOLEAN NOT NULL DEFAULT false
+```
+
+### BirthDateが1960以上ならTrue
+
+```
+UPDATE Employees SET Junior = CASE WHEN strftime('%Y',BirthDate) > '1960' THEN TRUE ELSE FALSE END
+```
 
 ## 「長くお世話になった運送会社には運送コストを多く払うことになったので、たくさん運送をお願いしている業者を特定して欲しい」
 
