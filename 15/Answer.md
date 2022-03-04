@@ -75,20 +75,56 @@ ALTER TABLE Shippers
 ADD long_relation BOOLEAN NOT NULL DEFAULT false
 ```
 
-### 
+### 70回以上、Orderに関わったShipper
+
+
+```
+UPDATE Shippers SET long_relation = CASE WHEN ShipperID IN (
+SELECT ShipperID
+FROM Orders 
+GROUP BY ShipperID 
+HAVING COUNT(ShipperID) >= 70)
+THEN true
+```
 
 ## 「それぞれのEmployeeが最後に担当したOrderと、その日付を取得してほしい」
 
+```
+SELECT OrderID,EmployeeID,MAX(OrderDate) AS LatrestOrderDate FROM Orders GROUP BY EmployeeID
+```
+
 ## Customerテーブルで任意の１レコードのCustomerNameをNULLにしてください
+
+```
+UPDATE Customers SET CustomerName = NULL WHERE CustomerName = 'Alfreds Futterkiste'
+```
 
 ## CustomerNameが存在するユーザを取得するクエリを作成してください
 
+```
+SELECT * FROM Customers WHERE CustomerName IS NOT NULL
+```
+
 ## CustomerNameが存在しない（NULLの）ユーザを取得するクエリを変えてください
+
+```
+SELECT * FROM Customers WHERE CustomerName IS NULL
+```
 
 ## EmployeeId=1の従業員のレコードを、Employeeテーブルから削除してください
 
-## OrdersとEmployeesをJOINして、注文と担当者を取得してください
+```
+DELETE FROM Employees WHERE EmployeeID = 1;
+```
 
 ## （削除された）EmloyeeId=1が担当したOrdersを表示しないクエリを書いてください
 
+```
+SELECT OrderID,CustomerID,Employees.EmployeeID,OrderDate,ShipperID FROM Orders JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID
+```
+
 ## （削除された）EmloyeeId=1が担当したOrdersを表示する（Employeesに関する情報はNULLで埋まる）クエリを書いてください
+
+```
+SELECT OrderID,CustomerID,Employees.EmployeeID,OrderDate,ShipperID FROM Orders LEFT JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID WHERE Employees.EmployeeID IS NULL
+```
