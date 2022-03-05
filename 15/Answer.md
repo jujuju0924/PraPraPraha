@@ -128,3 +128,44 @@ SELECT OrderID,CustomerID,Employees.EmployeeID,OrderDate,ShipperID FROM Orders J
 ```
 SELECT OrderID,CustomerID,Employees.EmployeeID,OrderDate,ShipperID FROM Orders LEFT JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID WHERE Employees.EmployeeID IS NULL
 ```
+
+# 課題2
+
+## WHEREとHAVING違い
+まずWHERE句はSUM,AVG,COUNT等の集計関数を用いることができない。
+WHEREは初めに行の絞り込みを行い、その次にグループ化、集計・列選択をする。
+
+HAVINGは集計結果が全てそろった段階で絞り込みが行われる。
+
+HAVINGの流れはWHERE句による検索→GROUP BYでグループ化→集計関数による集計と、列選択が終わった後に
+絞り込みを行うイメージ
+## DDL
+Data Definition Languageの略で、データ定義言語と呼ばれる。
+データベースの構造や構成を定義するために用いられるのが多い。
+DDLとされるコマンドは
+・テーブルやビューなどの作成を行うCREATE文
+・削除するDROP文
+・変更を加えるALTER文
+・データを全削除するTRUNCATE文
+などがある。
+## DML
+Data Manipulation Languageの略で、データ操作言語と呼ばれる。
+データベースを管理・操作するための言語の一種で、データベースに記録されたデータの参照や操作を行う。
+一番用いられることが多い。
+・SELECT文（検索・抽出）
+・INSERT文（データの追加）
+・UPDATE文（データの更新）
+・DELETE文（データの削除）
+などがある。
+## DCL
+Data Control Languageの略で、データ制御言語と呼ばれる。
+データベースの登録利用者にデータの読み込み、登録、変更、削除などを行う権限を与えたり奪ったりするのに用いる。
+・GRANT文（権限を与える）
+・REVOKE文（権限を奪う）
+などがある。
+## TCL
+Transaction Control Languageの略で、トランザクションの開始や終了の命令の総称。
+・COMMIT
+・ROLLBACK
+などがある。
+
