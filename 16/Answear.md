@@ -58,7 +58,7 @@ SQLを発見するのに大いに役に立つ。
 カーディナリティとはテーブルにカラムがあるとして、カラムに格納されているデータの種類がどのくらいあるのかを
 カーディナリティという。
 
-16/high-low-cardinality-dimensions.png
+![high-low-cardinality-dimensions](https://user-images.githubusercontent.com/58420905/157041272-f31b51f7-e1ad-4e3f-892f-e632dbd080f2.png)
 
 
 カラムに格納されているデータの種類が少ない場合は「カーディナリティが低い」といい、
