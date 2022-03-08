@@ -80,26 +80,33 @@ create index hoge on employees(last_name,hire_date);
 
 結果
 
+```
 select last_name from employees where first_name like '%Pr%';
 3428 rows in set (0.07 sec)
 
 index作成後
 3428 rows in set (0.10 sec)
+```
 
+```
 select hire_date  from employees where hire_date like '1994%';
 14835 rows in set, 1 warning (0.08 sec)
 
 index作成後
 14835 rows in set, 1 warning (0.07 sec)
+```
 
+```
 select hire_date  from employees where gender = 'F';
 120051 rows in set (0.12 sec)
 
 index作成後
 120051 rows in set (0.10 sec)
+```
 
 explain結果
 
+```
 mysql> explain select last_name from employees where first_name like '%Pr%';
 +----+-------------+-----------+------------+------+---------------+------+---------+------+--------+----------+-------------+
 | id | select_type | table     | partitions | type | possible_keys | key  | key_len | ref  | rows   | filtered | Extra       |
@@ -107,7 +114,9 @@ mysql> explain select last_name from employees where first_name like '%Pr%';
 |  1 | SIMPLE      | employees | NULL       | ALL  | NULL          | NULL | NULL    | NULL | 299157 |    11.11 | Using where |
 +----+-------------+-----------+------------+------+---------------+------+---------+------+--------+----------+-------------+
 1 row in set, 1 warning (0.00 sec)
+```
 
+```
 mysql> explain select hire_date  from employees where gender = 'F';
 +----+-------------+-----------+------------+------+---------------+------+---------+------+--------+----------+-------------+
 | id | select_type | table     | partitions | type | possible_keys | key  | key_len | ref  | rows   | filtered | Extra       |
@@ -115,7 +124,9 @@ mysql> explain select hire_date  from employees where gender = 'F';
 |  1 | SIMPLE      | employees | NULL       | ALL  | NULL          | NULL | NULL    | NULL | 299157 |    50.00 | Using where |
 +----+-------------+-----------+------------+------+---------------+------+---------+------+--------+----------+-------------+
 1 row in set, 1 warning (0.00 sec)
+```
 
+```
 mysql> explain select hire_date  from employees where hire_date like '1994%';
 +----+-------------+-----------+------------+-------+---------------+------+---------+------+--------+----------+--------------------------+
 | id | select_type | table     | partitions | type  | possible_keys | key  | key_len | ref  | rows   | filtered | Extra                    |
@@ -123,16 +134,23 @@ mysql> explain select hire_date  from employees where hire_date like '1994%';
 |  1 | SIMPLE      | employees | NULL       | index | NULL          | hoge | 21      | NULL | 299157 |    11.11 | Using where; Using index |
 +----+-------------+-----------+------------+-------+---------------+------+---------+------+--------+----------+--------------------------+
 1 row in set, 2 warnings (0.00 sec)
+```
 
 #　課題3
 indexあり
+
+```
 into employees values(5000002,'1958-05-01','Sachin','Tsukud','M','1997-11-30'),(5000003,'1958-05-01','Sachin','Tsukud','M','1997-11-30'),(5000004,'1958-05-01','Sachin','Tsukud','M','1997-11-30');
 Query OK, 3 rows affected (0.01 sec)
+```
 
 indexなし
+
+```
 insert into employees values(5000007,'1958-05-01','Sachin','Tsukud','M','1997-11-30'),(5000008,'1958-05-01','Sachin','Tsukud','M','1997-11-30'),(5000009,'1958-05-01','Sachin','Tsukud','M','1997-11-30');
 Query OK, 3 rows affected (0.00 sec)
 Records: 3  Duplicates: 0  Warnings: 0
+```
 
 ## INDEXがある場合とない場合で、INSERTにかかる時間にはどのような変化があったでしょうか？その理由を説明してください
 
