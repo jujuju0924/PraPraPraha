@@ -111,6 +111,14 @@ SELECT * FROM Customers WHERE CustomerName IS NOT NULL
 SELECT * FROM Customers WHERE CustomerName IS NULL
 ```
 
+## もしかすると、CustomerNameが存在しないユーザーを取得するクエリを、このように書いた方がいるかもしれません
+## しかし残念ながら、これでは期待した結果は得られません。なぜでしょうか？
+
+```
+SELECT * FROM Customers WHERE CustomerName IS NULL
+```
+NULLの場合は書き方が違うから
+
 ## EmployeeId=1の従業員のレコードを、Employeeテーブルから削除してください
 
 ```
